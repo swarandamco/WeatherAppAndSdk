@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">demoweatherapp</string>
+    <!-- Strings used for fragments for navigation -->
+
+    <string name="getting_location">Getting Location</string>
+    <string name="today">Today</string>
+    <string name="week">Week</string>
+    <string name="f_c">F/C</string>
+</resources>
