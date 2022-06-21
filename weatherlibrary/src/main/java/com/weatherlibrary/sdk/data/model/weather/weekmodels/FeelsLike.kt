@@ -1,7 +1,7 @@
 package com.weatherlibrary.sdk.data.model.weather.weekmodels
 
 
-data class Feels_like (
+data class FeelsLike (
 
 	val day : Double,
 	val night : Double,

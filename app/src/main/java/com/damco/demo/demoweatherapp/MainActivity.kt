@@ -14,7 +14,6 @@ import android.provider.Settings
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.lifecycle.ViewModelProvider
 import com.damco.demo.demoweatherapp.databinding.ActivityMainBinding
 import com.google.android.gms.location.*
 import com.weatherlibrary.sdk.WeatherSDK
@@ -33,7 +32,7 @@ class MainActivity : AppCompatActivity() {
     private var longitude = 0.0
     private var exclude = "hourly,minutely"
     private var cnt = 7
-    private var temp=WeatherSDK.TempUnit.FAHRENHEIT
+    private var temp = WeatherSDK.TempUnit.FAHRENHEIT
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,7 +54,7 @@ class MainActivity : AppCompatActivity() {
         binding.content.week.setOnClickListener {
             getCurrentWeatherforWeek()
         }
-        
+
         binding.content.temp.setOnCheckedChangeListener { buttonView, isChecked ->
             temp = if (isChecked) {
                 WeatherSDK.TempUnit.CELSIUS
@@ -210,17 +209,10 @@ class MainActivity : AppCompatActivity() {
             cnt,
             object : WeatherSDK.WeatherDataListenerforWeek {
                 override fun onWeatherResponseforWeek(response: WeatherWeekResponse) {
-//                    for(response.)
-//                    val listofWeekSize = response.daily.size
                     var finalres = ""
-
-//                    for(i:Int = 0; i<response.daily)
                     response.daily.forEachIndexed { index, data ->
-//                        for (data in response.daily) {
                         finalres =
                             finalres + "Weather : ${getDatesForWeek(index)}: " + data.weather[0].main + ", " + data.weather[0].description + "\n Max temp " + data.temp.max + ", Min Temp" + data.temp.max + ", \n WindSpeed: " + data.wind_speed + "\n \n"
-//                        }
-
                     }
                     openAlertDialog("Weather for Week", finalres)
                 }
@@ -240,7 +232,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-//        private const val TAG = "MainActivity"
         private const val PERMISSION_ID = 44
     }
 
@@ -268,10 +259,8 @@ class MainActivity : AppCompatActivity() {
     fun getDatesForWeek(amount: Int): String {
         val dateFormat = "MM/dd/yyyy"
         val cal = Calendar.getInstance()
-//        cal.time = Date(currentTime)
         cal.add(Calendar.DAY_OF_MONTH, amount)
         val date = cal.time
-        //EEE MMM dd HH:mm:ss z yyyy
         val formatter = SimpleDateFormat(dateFormat)
         formatter.isLenient = false
         return formatter.format(date)

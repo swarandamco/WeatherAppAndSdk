@@ -22,6 +22,7 @@ class AndroidAppTest {
         weatherSDK = WeatherSDK.getInstance(apiKey)
     }
 
+    // Test case to check response for current day
     @Test
     fun testWeatherResponseforsameday() {
         var apiResponse: WeatherResponse? = null
@@ -46,6 +47,7 @@ class AndroidAppTest {
     }
 
 
+    // Test case to check response for week
     @Test
     fun testWeatherResponseforWeek() {
         var apiResponse: WeatherWeekResponse? = null
