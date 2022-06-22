@@ -39,8 +39,8 @@ class WeatherSDK private constructor(private val apiKey: String) {
         Log.d(TAG, "$latitude  $longitude  $apiKey")
         appDateSource.getCurrentWeather(latitude, longitude, convertTempUnit(tempUnit), apiKey)
             .subscribeOn(Schedulers.io())
-            ?.observeOn(AndroidSchedulers.mainThread())
-            ?.subscribe({ onSuccessResponse -> onSuccess(onSuccessResponse) },
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ onSuccessResponse -> onSuccess(onSuccessResponse) },
                 { onErrorResponse -> handleError(onErrorResponse) })
     }
 
@@ -69,8 +69,8 @@ class WeatherSDK private constructor(private val apiKey: String) {
         Log.d(TAG, "$latitude  $longitude  $apiKey")
         appDateSource.getCurrentWeatherforWeek(latitude, longitude, convertTempUnit(tempUnit),exclude,cnt, apiKey)
             .subscribeOn(Schedulers.io())
-            ?.observeOn(AndroidSchedulers.mainThread())
-            ?.subscribe({ onSuccessResponse -> onSuccess(onSuccessResponse) },
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ onSuccessResponse -> onSuccess(onSuccessResponse) },
                 { onErrorResponse -> handleErrorforWeek(onErrorResponse) })
     }
 

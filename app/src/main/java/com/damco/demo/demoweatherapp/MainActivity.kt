@@ -130,8 +130,8 @@ class MainActivity : AppCompatActivity() {
 
     private val locationCallback: LocationCallback = object : LocationCallback() {
         override fun onLocationResult(locationResult: LocationResult) {
-            val mLastLocation: Location = locationResult.lastLocation
-            setLocation(mLastLocation)
+            val mLastLocation: Location? = locationResult.lastLocation
+            mLastLocation?.let { setLocation(it) }
         }
     }
 
